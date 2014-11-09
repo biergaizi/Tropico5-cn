@@ -21,6 +21,8 @@ def merge(old_tr, new_tr):
     for i in old_tr:
         text = i[2]   # text
         trans = i[10] # NewTranslation
+        if translation.get(text) and translation[text] != trans:
+            print("Warning: multiple translation for \"%s\"" % text, file=sys.stderr)
         translation[text] = trans
 
     for i in new_tr:
